@@ -4,9 +4,9 @@ const http = require("http");
 //definir un servidor
 const server = http.createServer( function(request, response) {
     // cada petición se ejecuta esto
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.writeHead(200, {'Content-Type': 'text/html'});
 
-    response.end('Wake up, Neo');
+    response.end('Wake up, <b>Neo</b>');
 
 })
 
