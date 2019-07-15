@@ -1,6 +1,6 @@
 //cargar libreria http
 const http = require("http");
-
+const chance = require('chance');
 //definir un servidor
 const server = http.createServer( function(request, response) {
     // cada petición se ejecuta esto
