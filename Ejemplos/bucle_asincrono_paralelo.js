@@ -10,7 +10,8 @@ function escribeTras2Segundos(texto, callback) {
     }, 2000)
 }
 
-// mandar 5 consultas en paralelo. Saca en pantalla empiezo y fin y después termino y texto 5 veces cada uno.
+// mandar 5 consultas en paralelo. Saca en pantalla empiezo y fin y después termino y texto 5 veces cada uno y 
+// cada vuelta no espera a la anterior.
 for(let n = 0; n< 5; n++) {
     escribeTras2Segundos('texto', function() {
         console.log('termino');
