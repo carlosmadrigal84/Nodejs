@@ -14,4 +14,4 @@ const server = http.createServer( function(request, response) {
 
 //arrancar el servidor
 server.listen(1337, '127.0.0.1');
-console.log('Servidor arrancado en http://127.0.0.1:1337');
+console.log('Servidor arrancado en http://127.0.0.1:1337'); // Para arrancar un servidor vale esa dirección o ponemos otra?
