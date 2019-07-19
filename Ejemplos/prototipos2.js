@@ -24,7 +24,7 @@ luis.saluda();// sale en consola Hola, me llamo Luis
 // constructor de Agentes
 function Agente(nombre) {
     // heredar el constructor de personas
-    Persona.call(this, nombre);
+    Persona.call(this, nombre);// call o Apply llaman a la función con el this o Apply que me apetezca 
 }
 
 // heredamos sus propiedades y métodos

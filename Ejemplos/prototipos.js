@@ -7,10 +7,11 @@ function Persona(nombre) {
     this.saluda = function() {
         console.log('Hola, me llamo', this.nombre);
     }
+    
 }
 
 // construir un objeto
-const luis = new Persona('Luis');
+const carlos = new Persona('Carlos');
 
-luis.saluda();// sale en consola Hola, me llamo Luis
+carlos.saluda();// sale en consola Hola, me llamo Luis
 

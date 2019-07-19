@@ -17,12 +17,11 @@ function serie(arr, fn, callbackFinalizacion) {
         callbackFinalizacion();
         return;
     }
-    n = n - 1; // Para que salga texto4, texto3, texto2 ...
     fn('texto' + arr.shift(), function() { // fn() sería la llamada a escribeTras2Segundos
-        serie(n, fn, callbackFinalizacion);
+        serie(arr, fn, callbackFinalizacion);
     })
 }
 serie( [1, 2, 3, 4, 5], escribeTras2Segundos, function() {
     console.log('fin');
 })
-
+// Para la práctica puede que la librería async sea buena.
