@@ -6,7 +6,7 @@ const chance = new Chance();
 //definir un servidor
 const server = http.createServer( function(request, response) {
     // cada petición se ejecuta esto
-    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.writeHead(200, {'Content-Type': 'text/html'}); // Esta línea es un Middleware.
 
     response.end('Wake up, ' + chance.name());
 
