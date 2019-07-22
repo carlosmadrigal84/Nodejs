@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+// object destructuring ---- Sirve para coger sólo los métodos que me interesan de un módulo
+const { query, validationResult } = require('express-validator/check');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -17,9 +20,14 @@ router.get('/params/:id/piso/:piso/puerta/:puerta', (req, res, next) => {
   res.send('ok');
 });
 
-router.get('/enquerystring', (req, res, next) => {
-  console.log('req.query', req.query);
-  res.send('ok');
+router.get('/enquerystring', 
+  query('color').isLowercase().withMessage('must be lower case'),
+  query('talla').isNumeric().withMessage('must be numeric')
+  (req, res, next) => {
+    validationResult(req).throw(); // lanza excepcion si no valida
+    // si llego aquí es que los parámetros de entrada son válidos
+    console.log('req.query', req.query);
+    res.send('ok');
 })
 
 router.post('/rutapost', (req, res, next) => {
