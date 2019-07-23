@@ -9,6 +9,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); // __dirname es la ruta absoluta de la carpeta donde estoy
 app.set('view engine', 'ejs'); // __filename es la ruta absoluta del fichero que ejecuto. Dichas rutas aparecen en consola
+app.engine('html', require('ejs').__express);
 
 // Middlewares: una app de express es una lista de Middlewares. Es una función con 3 parámetros(req, res, next).
 app.use(logger('dev')); // Este looger usa la librería "morgan", de la línea 5
@@ -21,13 +22,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
   // Tiene que hacer una de 2 cosas:
   // - o Responder
-  res.send('ok');
+  // res.send('ok');
   // - o llamar a next
   next();// Si le pasamos algo a next, hay que intentar que sean objetos que tengan una propiedad message.
   //Una buena práctica es hacer: next(new Error('cosa mala'));
   // Si os da error: Cannot set headers after they are sent to the client
   // Significa que he respondido 2 o más veces.
 })
+
+
+app.locals.title = 'NodeAPI';
 
 /**
  * Rutas de mi aplicación web
