@@ -19,6 +19,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/pdf', express.static(path.join(__dirname, 'd:\pdfs'))); Para servir todas las peticiones que te pidan en pdf y vas a buscar ficheros estáticos en d:\pdfs
 //con esta línea de encima puedes añadir todos los routers de estáticos que te de la gana
+
+/**
+* Conexión con la base de datos
+*/
+require('./lib/connectMongoose');
+require('./models/Agente');
+
 app.use((req, res, next) => {
   // Tiene que hacer una de 2 cosas:
   // - o Responder
@@ -30,6 +37,10 @@ app.use((req, res, next) => {
   // Significa que he respondido 2 o más veces.
 })
 
+/**
+* Rutas de mi API
+*/
+app.use('/apiv1/agentes', require('./routes/apiv1/agentes'));
 
 app.locals.title = 'NodeAPI';
 
