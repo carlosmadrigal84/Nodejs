@@ -1,6 +1,6 @@
 //cargar libreria http
 const http = require("http");
-const Chance = require('chance');
+const Chance = require('chance'); // libreia chance sirve para sacar nombres aleatorios cada vez que actualizamos el navegador.
 
 const chance = new Chance();
 //definir un servidor

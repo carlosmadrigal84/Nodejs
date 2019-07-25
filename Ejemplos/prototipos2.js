@@ -24,11 +24,11 @@ luis.saluda();// sale en consola Hola, me llamo Luis
 // constructor de Agentes
 function Agente(nombre) {
     // heredar el constructor de personas
-    Persona.call(this, nombre);// call o Apply llaman a la función con el this o Apply que me apetezca 
+    Persona.call(this, nombre);// call o Apply llaman a la función con el this que me apetezca 
 }
 
-// heredamos sus propiedades y métodos
-Agente.prototype = Object.create(Persona.prototype); 
+// heredamos sus propiedades y métodos (hay que poner estas 2 líneas para heredar todo)
+Agente.prototype = Object.create(Persona.prototype); // Usamos object.create porque nos crea un objeto de tipo persona, y nos deja vinculadas todas las cosas que tiene que estar vinculadas para la herencia
 Agente.prototype.constructor = Agente;
 
 const smith = new Agente('Smith');

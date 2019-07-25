@@ -12,12 +12,12 @@ function escribeTras2Segundos(texto, callback) {
 
 // bucle asíncrono en serie
 // llamar a una función n veces en serie, y al terminar llamar al callback de finalización
-function serie(n, fn, callbackFinalizacion) {
+function serie(n, fn, callbackFinalizacion) { // función recursiva (se llama a si misma)
     if (n == 0) {
         callbackFinalizacion();
         return;
     }
-    n = n - 1; // Para que salga texto4, texto3, texto2 ...
+    n = n - 1; // Para que salga texto4, texto3, texto2 ... pero hay que pararlo. Para ello usamos el n == 0 y el return.
     fn('texto' + n, function() { // fn() sería la llamada a escribeTras2Segundos
         serie(n, fn, callbackFinalizacion);
     })
