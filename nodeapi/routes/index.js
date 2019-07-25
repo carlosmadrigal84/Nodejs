@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/paramenruta/:numero?', (req, res, next) => {
-  console.log('req.params', req.params);
+  console.log('req.params', req.params);// la interrogación es para decir que el número que sale en la url sea opcional.
   res.send('ok');
 });
 

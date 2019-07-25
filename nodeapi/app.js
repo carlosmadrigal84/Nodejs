@@ -7,9 +7,9 @@ var logger = require('morgan');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views')); // __dirname es la ruta absoluta de la carpeta donde estoy
-app.set('view engine', 'ejs'); // __filename es la ruta absoluta del fichero que ejecuto. Dichas rutas aparecen en consola
-app.engine('html', require('ejs').__express);
+app.set('views', path.join(__dirname, 'views')); // __dirname es la ruta absoluta de la carpeta 
+app.engine('html', require('ejs')._donde estoy
+app.set('view engine', 'ejs'); // __filename es la ruta absoluta del fichero que ejecuto. Dichas rutas aparecen en consola_express);
 
 // Middlewares: una app de express es una lista de Middlewares. Es una función con 3 parámetros(req, res, next).
 app.use(logger('dev')); // Este looger usa la librería "morgan", de la línea 5

@@ -12,6 +12,6 @@ module.exports.multiply = function(a, b) {
     return a * b
 }
 
-module.exports.suma = suma;
+module.exports.add = suma;
 exports.subtract = resta;
 

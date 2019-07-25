@@ -10,8 +10,8 @@ const EVENT_LLAMADA_TELEFONO = 'llamada de teléfono'
 // actuar ante eventos
 emisor.on(EVENT_LLAMADA_TELEFONO, (info) => { // si sólo hay un argumento, se pueden omitir los parétesis.
     if (info.llamante === 'madre') {
-        return;
-    }
+        return;// emisor.on hereda de un event emitter
+    }// de la línea 11 a la 15 es un event handler
     console.log('ring ring');
 }); // hereda de un evento
 
@@ -20,5 +20,5 @@ emisor.on(EVENT_LLAMADA_TELEFONO, () => { //emisor.once(EVENT_LLAMADA_TELEFONO, 
 });
 
 // emitir eventos
-emisor.emit(EVENT_LLAMADA_TELEFONO, { llamante: 'madre' }); // identificador del evento
+emisor.emit(EVENT_LLAMADA_TELEFONO, { llamante: 'carlos' }); // identificador del evento
 emisor.emit(EVENT_LLAMADA_TELEFONO, { llamante: 'madre' });
