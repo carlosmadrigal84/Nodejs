@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
       if (httpResponse.data && httpResponse.data.success) {
         anuncios = httpResponse.data.results;
       }
-      res.render("index", { title: "Express", anuncios: anuncios });
+      res.render("index", { title: "Nodepop", anuncios: anuncios });
     })
     .catch(err => {
       res.render('error', {message: err, error: {status: 500}});
