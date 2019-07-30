@@ -8,8 +8,9 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); // __dirname es la ruta absoluta de la carpeta 
-app.engine('html', require('ejs')._donde estoy
-app.set('view engine', 'ejs'); // __filename es la ruta absoluta del fichero que ejecuto. Dichas rutas aparecen en consola_express);
+app.set('view engine', 'html'); // __filename es la ruta absoluta del fichero que ejecuto. Dichas rutas aparecen en consola_express);
+app.engine('html', require('ejs').__express);//._donde estoy
+
 
 // Middlewares: una app de express es una lista de Middlewares. Es una función con 3 parámetros(req, res, next).
 app.use(logger('dev')); // Este looger usa la librería "morgan", de la línea 5
@@ -60,16 +61,28 @@ app.use(function(err, req, res, next) {
   // comprobar error de validación
   if (err.array) { // error de validación
     err.status = 422;
-    const errInfo = err.array({ onlyFirstError: true})[0];
-    err.message = `Not valid - ${errInfo.param} ${errInfo.msg}`;
+    const errInfo = err.array({ onlyFirstError: true})[0];// Este es un método de error de Express validator.
+    err.message = isAPI(req) ?
+      { message: 'Not valid', errors: err.mapped()} :
+      `Not valid - ${errInfo.param} ${errInfo.msg}`;
+  }
+
+  res.status(err.status || 500);
+
+  if (isAPI(req)) {
+    res.json({ sucess: false, error: err.message});
+    return;
   }
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
   res.render('error');
 });
+
+function isAPI(req) {
+  return req.originalUrl.indexOf('/apiv') === 0;
+}
 
 module.exports = app;
